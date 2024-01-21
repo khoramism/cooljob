@@ -1,10 +1,47 @@
-version: '3.8'
+# version: '3.8'
+# services:
+#   app:
+#     image: digikala_crawler
+#     build: .
+#     # environment:
+#     #   - PLAYWRIGHT_BROWSERS_PATH=/app/.cache/ms-playwright  # Optional: Sets a fixed location for Playwright browsers
+
+# volumes:
+#   data:  
+version: '3.7'
 services:
-  app:
-    image: digikala_crawler
-    build: .
-    # environment:
-    #   - PLAYWRIGHT_BROWSERS_PATH=/app/.cache/ms-playwright  # Optional: Sets a fixed location for Playwright browsers
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.0
+    container_name: elasticsearch
+    environment:
+      - node.name=es01
+      - cluster.name=cool-job-cluster
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - xpack.security.enabled=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.12.0
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=khoram_soltan
+      - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
+    depends_on:
+      - elasticsearch
+    ports:
+      - 5601:5601
 
 volumes:
-  data:  # This named volume corresponds to the one used in the service definition
+  esdata1:
+    driver: local
