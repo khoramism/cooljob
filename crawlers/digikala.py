@@ -18,7 +18,7 @@ def get_job_details(browser, job_url):
     context.close()
     return detail_text.strip()
 
-def run(playwright):
+def run_digikala(playwright):
     browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
@@ -27,7 +27,8 @@ def run(playwright):
 
     jobs = page.query_selector_all('a.career-item')
     page.wait_for_selector('a.career-item')
-
+    
+    all_jobs_data = []
     for job in jobs:
         try:
             job_data = {}
@@ -36,17 +37,10 @@ def run(playwright):
             job_data['location'] = job.query_selector('div.location > span').text_content()
             job_data['url'] = job.get_attribute('href')
             job_data['detail'] = get_job_details(browser, job_data['url'])
-
-            # Use the job ID or title as the filename
-            file_name = f"{job_data['title']}.json".replace('/', '_')  # Replace '/' to avoid path issues
-            with open(file_name, 'w') as file:
-                json.dump(job_data, file)
-
+            all_jobs_data.append(job_data)
+    
         except Exception as e:
             print(f"Error processing job: {str(e)}")
-
-    # Close the original context
     context.close()
+    return all_jobs_data
 
-with sync_playwright() as playwright:
-    run(playwright)

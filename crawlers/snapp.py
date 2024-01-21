@@ -3,7 +3,7 @@ import requests
 
 site = 'https://career.snapp.ir/'
 
-def get_list():
+def get_snapp_list():
     resp = requests.get(site)
     soup = BeautifulSoup(resp.text, 'html.parser')
     
@@ -20,7 +20,9 @@ def get_list():
             'department': department,
             'location': location,
             'url': url, 
-            'job_detail' : job_detail
+            'job_detail' : job_detail,
+            'company' : 'snapp'
+
         }
         job_list.append(job_dict)
     return job_list
@@ -29,8 +31,5 @@ def get_detail(url: str):
     class_content = 'col-md-9 content'
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text, 'html.parser')
-    print(soup.find('div', attrs={'class' : class_content}).text)
+    return soup.find('div', attrs={'class' : class_content}).text
 
-jobs = get_list()
-for job in jobs:
-    print(job)
