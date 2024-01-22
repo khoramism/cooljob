@@ -12,4 +12,7 @@ with sync_playwright() as playwright:
     all_job_data.append(run_digikala(playwright))
     all_job_data.append(run_tapsi(playwright))
 
-print(all_job_data)
+for job_companies in all_job_data:
+    for job in job_companies:
+        print(job)
+        insert_data(index_name='cooljob', job_data=job)

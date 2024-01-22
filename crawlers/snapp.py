@@ -17,12 +17,11 @@ def get_snapp_list():
 
         job_dict = {
             'title': title,
-            'department': department,
+            'team': department,
             'location': location,
             'url': url, 
-            'job_detail' : job_detail,
+            'detail' : job_detail,
             'company' : 'snapp'
-
         }
         job_list.append(job_dict)
     return job_list

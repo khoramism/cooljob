@@ -34,15 +34,14 @@ def run_tapsi(playwright):
         
         detail = get_job_details(browser=browser, job_url=full_url)
         job_data = {
-            'position': position,
+            'title': position,
             'team': team,
-            'city': city,
+            'location': city,
             'url': full_url,
             'detail' : detail,
-            'company': 'tapis'
+            'company': 'tapsi'
         }
         jobs_data.append(job_data)
-
     browser.close()
     return jobs_data
 

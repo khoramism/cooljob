@@ -33,10 +33,11 @@ def run_digikala(playwright):
         try:
             job_data = {}
             job_data['title'] = job.query_selector('h4.title').text_content()
-            job_data['department'] = job.query_selector('span.department').text_content()
+            job_data['team'] = job.query_selector('span.department').text_content()
             job_data['location'] = job.query_selector('div.location > span').text_content()
             job_data['url'] = job.get_attribute('href')
             job_data['detail'] = get_job_details(browser, job_data['url'])
+            job_data['company'] = 'digikala'
             all_jobs_data.append(job_data)
     
         except Exception as e:

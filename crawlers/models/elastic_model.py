@@ -101,9 +101,10 @@ def create_multilingual_index_with_multifields(es, index_name):
 
 
 # create_multilingual_index_with_multifields(
-#     es=es, index_name='cool_job'
+#     es=es, index_name='cooljob'
 # )
 
 
 def insert_data(index_name, job_data):
-    es.index(index=index_name, body=job_data)
+    return es.index(index=index_name, body=job_data, id=None)
+
