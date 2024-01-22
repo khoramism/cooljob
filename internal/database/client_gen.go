@@ -10,7 +10,7 @@ import (
 )
 
 func CreateClient() *elasticsearch.Client {
-	err := godotenv.Load("../../.env")
+	err := godotenv.Load(".env")
 	if err != nil {
 		panic(err.Error())
 	}

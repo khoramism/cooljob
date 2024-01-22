@@ -63,12 +63,9 @@ func QueryGenerator(company string, title string, city string, detail string) (*
 	}
 	reader := bytes.NewReader(jsonBytes)
 
-	// Read data from the reader
-
 	if err != nil {
 		fmt.Printf("Error reading from reader: %v\n", err)
 		return nil, err
 	}
 	return reader, nil
-
 }
