@@ -16,9 +16,6 @@ Welcome to the Iran Tech Job Market Explorer - a comprehensive platform aimed at
 - **Swagger:** Detailed API documentation.
 - **Vue.js & Vuetify:** Frontend development for a responsive and interactive user interface.
 
-### Project Structure
-
-[Include your tree overview here]
 
 ### Installation and Setup
 
