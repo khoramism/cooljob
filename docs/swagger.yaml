@@ -1,0 +1,41 @@
+definitions:
+  database.JobPost:
+    properties:
+      company:
+        type: string
+      detail:
+        type: string
+      location:
+        type: string
+      team:
+        type: string
+      title:
+        type: string
+      url:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /v1/jobs/{title}:
+    get:
+      consumes:
+      - application/json
+      description: Get job post by given title.
+      parameters:
+      - description: Job Post title
+        in: path
+        name: title
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/database.JobPost'
+      summary: get jobpost by given title.
+      tags:
+      - JobPosts
+swagger: "2.0"

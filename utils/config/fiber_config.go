@@ -13,7 +13,7 @@ func FiberConfig() fiber.Config {
 
 	// Return Fiber configuration.
 	return fiber.Config{
-		Prefork:       true,
+		Prefork:       false,
 		CaseSensitive: true,
 		ReadTimeout:   time.Second * time.Duration(readTimeoutSecondsCount),
 		AppName:       "CoolJob",

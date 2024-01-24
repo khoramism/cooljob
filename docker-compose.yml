@@ -1,15 +1,11 @@
-# version: '3.8'
-# services:
-#   app:
-#     image: digikala_crawler
-#     build: .
-#     # environment:
-#     #   - PLAYWRIGHT_BROWSERS_PATH=/app/.cache/ms-playwright  # Optional: Sets a fixed location for Playwright browsers
-
-# volumes:
-#   data:  
-version: '3.7'
+version: '3.8'
 services:
+  api: 
+    build: .
+    container_name: cooljob-api
+    ports:
+      - 8585:8585 
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.12.0
     container_name: elasticsearch

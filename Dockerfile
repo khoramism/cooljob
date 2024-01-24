@@ -1,14 +1,15 @@
-FROM python:3.9-slim
+FROM golang:1.21.6
 
-# Set the working directory in the container
 WORKDIR /app
 
-# Copy the script to the container
-COPY . /app
+COPY go.mod go.sum ./
 
-# Install dependencies
-RUN pip install playwright
-RUN playwright install chromium
-RUN playwright install-deps
-# Run the script
-CMD ["python", "/app/crawlers/digikala.py"]
+RUN go mod download
+
+COPY . ./
+
+EXPOSE 8585 
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o /app/cooljob-api
+
+ENTRYPOINT ["/app/cooljob-api"]

@@ -1,11 +1,12 @@
 package main
 
 import (
+	"log"
+
 	"github.com/gofiber/fiber/v2"
-	configs "github.com/khoramism/cooljob/pkg/config"
-	"github.com/khoramism/cooljob/pkg/middleware"
-	"github.com/khoramism/cooljob/pkg/routes"
-	"github.com/khoramism/cooljob/pkg/utils"
+	configs "github.com/khoramism/cooljob/utils/config"
+	"github.com/khoramism/cooljob/utils/middleware"
+	"github.com/khoramism/cooljob/utils/routes"
 )
 
 func main() {
@@ -19,5 +20,10 @@ func main() {
 	routes.PublicRoutes(app)  // Register a public routes for app.
 	routes.NotFoundRoute(app) // Register route for 404 Error.
 
-	utils.StartServerWithGracefulShutdown(app)
+	// utils.StartServer(app)
+	fiberConnURL := "0.0.0.0:8585"
+	err := app.Listen(fiberConnURL)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }

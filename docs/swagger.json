@@ -1,0 +1,65 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/v1/jobs/{title}": {
+            "get": {
+                "description": "Get job post by given title.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "JobPosts"
+                ],
+                "summary": "get jobpost by given title.",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Job Post title",
+                        "name": "title",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/database.JobPost"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "database.JobPost": {
+            "type": "object",
+            "properties": {
+                "company": {
+                    "type": "string"
+                },
+                "detail": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "team": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

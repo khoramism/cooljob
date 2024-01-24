@@ -17,7 +17,7 @@ func CreateClient() *elasticsearch.Client {
 	elUsername := os.Getenv("ELASTIC_USERNAME")
 	elPassword := os.Getenv("ELASTIC_PASSWORD")
 
-	connection_url := fmt.Sprintf("http://%s:%s@localhost:9200", elUsername, elPassword)
+	connection_url := fmt.Sprintf("http://%s:%s@elasticsearch:9200", elUsername, elPassword)
 	cfg := elasticsearch.Config{
 		Addresses: []string{connection_url},
 	}
