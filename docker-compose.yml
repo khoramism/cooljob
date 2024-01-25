@@ -5,6 +5,18 @@ services:
     container_name: cooljob-api
     ports:
       - 8585:8585 
+    volumes:
+      - redis_data:/data
+  redis-db:
+    container_name: redis-db
+    image: redis/redis-stack:latest
+    environment:
+      - REDIS_ARGS="--requirepass ${REDIS_PASS} --save 60 1000 --appendonly yes"
+    ports:
+      - 6379:6379
+      # Redis Insight Port
+      - 13332:8001
+
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.12.0
@@ -41,3 +53,5 @@ services:
 volumes:
   esdata1:
     driver: local
+  redis_data:
+    driver:local
