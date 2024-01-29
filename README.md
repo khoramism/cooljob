@@ -48,7 +48,7 @@ Our API is thoroughly documented using Swagger. Here's a glimpse of what you can
 
 ### Web Interface
 
-Access our platform at [cooljob.ir](http://cooljob.ir) for a user-friendly experience, developed using Vue.js and Vuetify.
+Access our platform at [cooljob.ir](https://cooljob.ir) for a user-friendly experience, developed using Vue.js and Vuetify.
 
 ### Repositories
 
