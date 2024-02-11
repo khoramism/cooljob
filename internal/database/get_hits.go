@@ -30,7 +30,8 @@ func GetHits(index_name, company, title, city, detail string) ([]JobPost, error)
 	)
 
 	if err != nil {
-		log.Fatalln("Failed to search")
+		log.Printf("Failed to search")
+
 		return nil, err
 	}
 

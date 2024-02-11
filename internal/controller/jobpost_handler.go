@@ -6,6 +6,7 @@ import (
 )
 
 // GetJobPosts func gets jobposts by given title or 404 error.
+//
 //	@Description	Get job post by given title.
 //	@Summary		get jobpost by given title.
 //	@Tags			JobPosts
