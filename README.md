@@ -16,9 +16,6 @@ Welcome to the Iran Tech Job Market Explorer - a comprehensive platform aimed at
 - **Swagger:** Detailed API documentation.
 - **Vue.js & Vuetify:** Frontend development for a responsive and interactive user interface.
 
-### Project Structure
-
-[Include your tree overview here]
 
 ### Installation and Setup
 
@@ -51,7 +48,7 @@ Our API is thoroughly documented using Swagger. Here's a glimpse of what you can
 
 ### Web Interface
 
-Access our platform at [cooljob.ir](http://cooljob.ir) for a user-friendly experience, developed using Vue.js and Vuetify.
+Access our platform at [cooljob.ir](https://cooljob.ir) for a user-friendly experience, developed using Vue.js and Vuetify.
 
 ### Repositories
 
